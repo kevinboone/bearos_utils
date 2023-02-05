@@ -1,0 +1,20 @@
+# Location of the BearOS API files
+BEAROS    := /home/kevin/Dropbox/source/bearos/api
+
+# Define the compiler, linker, and objcopy
+CC=arm-none-eabi-gcc
+LD=arm-none-eabi-ld
+STRIP=arm-none-eabi-strip
+OBJCOPY=arm-none-eabi-objcopy
+LIBGCC=/usr/lib/gcc/arm-none-eabi/12.2.0/thumb/v6-m/nofp/libgcc.a
+NEWLIB=/usr/arm-none-eabi/lib/thumb/v6-m/nofp/libc_nano.a
+MATHLIB=/usr/arm-none-eabi/lib/thumb/v6-m/nofp/libm.a
+
+# BearOS program load address, used by the linker
+//LOADADDR=0x20004000
+//LOADADDR=0x20005000
+LOADADDR=0x20005800
+
+# Where to stage the compiled utilities, prior to deployment
+STAGE=../rootfs/
+

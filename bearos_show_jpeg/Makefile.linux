@@ -1,0 +1,34 @@
+#define the name of the final executable
+TARGET    := show-jpeg
+
+VERSION   := 0.1a
+
+# Add compiler flags for personal preference
+EXTRA_CFLAGS=-Wall -Wextra 
+
+# Construct the full gcc argument. -MMD enables generation of dependency files
+CFLAGS=$(INCLUDE_CFLAGS) $(EXTRA_CFLAGS) -DVERSION=\"${VERSION}\"
+
+MYSRCS    := $(shell find src/ -type f -name *.c)
+MYOBJS    := $(patsubst src/%,build/my/%,$(MYSRCS:.c=.o))
+
+all:$(TARGET)
+
+OBJS=$(MYOBJS) $(LIBOBJS) $(STARTOBJS)
+
+DEPS=$(MYSRCS/.c=.d) $(LIBSRCS:.c=.d) $(STARTSRC:.c=.d)
+
+# Rules for compiling my source, the library source, and start files
+
+build/my/%.o: src/%.c 
+	@mkdir -p build/my
+	$(CC) -Wall -O0 $(CFLAGS) -c $< -o $@ 
+
+$(TARGET): $(MYOBJS)
+	$(CC) -o $(TARGET) $(MYOBJS)
+
+-include $(DEPS)
+
+clean:
+	rm -rf $(TARGET) build/ 
+

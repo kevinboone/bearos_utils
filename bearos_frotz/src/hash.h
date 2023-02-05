@@ -1,0 +1,5 @@
+#define VERSION "2.54"
+#define RELEASE_NOTES "Official release."
+#define GIT_HASH "e9f8bb602ba694dffbc95d13cb8fc4cb95bf3867"
+#define GIT_HASH_SHORT "e9f8bb6"
+#define GIT_DATE "2022-12-03 22:22:05 -0800"

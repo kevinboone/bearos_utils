@@ -1,0 +1,14 @@
+; Bearcal sample script
+
+; Some useful functions
+
+log2: 1: log(x)/log(2)    ; Base-2 logarithm
+pyth: 2: sqrt(x^2 + y^2)  ; Pythagorean distance
+
+; Some useful constants
+
+g: 9.80665        ; Acceleration due to gravity
+c: 299792458      ; Speed of light
+G: 6.67430e-11    ; Universal gravitational constant
+Na: 6.02214076e23 ; Avogadro's number
+

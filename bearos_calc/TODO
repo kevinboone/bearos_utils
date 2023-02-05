@@ -1,0 +1,15 @@
+Generally tidy up. The implementation is a bit messy. In particular, a lot
+of logic is mixed up with the display operations.
+
+Find a way to deal with the situation where a function definition changes
+while another function is still using it. At present, this generally
+causes a crash, because redefining the function frees its memory.
+
+A big job: reimplement the arithmetic in decimal, and remove the reliance
+on the bloated ARM floating point math library. This is how bc works,
+after all.
+
+Separate out the processing of commands from expressions, and parse the command
+properly. This would open the way to implementing more sophisticated
+commands, like integration or tabulation.
+

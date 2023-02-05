@@ -1,0 +1,228 @@
+rad = 0
+deg = 1
+
+angle=rad
+
+/*==========================================================================
+  Basic functions
+==========================================================================*/
+define sin(theta)
+  {
+  if (angle == deg) 
+    return s(torad(theta));
+  return s(theta)
+  }
+
+define cos(theta)
+  {
+  if (angle == deg) 
+    return c(torad(theta));
+  return c(theta)
+  }
+
+define atan(theta)
+  {
+  if (angle == deg) 
+     return todeg (a(theta))
+  return a(theta)
+  }
+
+/* Pi. We need to keep this as a function, so it's value will be correct
+   for the scale that is in effect. */
+define pi()
+  {
+  return a(1)*4
+  }
+
+/*==========================================================================
+Trig functions defined from the basic ones
+==========================================================================*/
+
+define acos(x)
+  {
+  return atan (sqrt (1 - x^2) / x)
+  }
+
+define asin(x)
+  {
+  return atan (x / sqrt (1 - x^2))
+  }
+
+define cosec(x)
+  {
+  return 1/sin(x)
+  }
+
+define cot(x)
+  {
+  return 1/tan(x)
+  }
+
+define sec(x)
+  {
+  return 1/cos(x)
+  }
+
+define tan(theta)
+  {
+  return sin(theta)/cos(theta)
+  }
+
+/* Degrees to radians */
+define torad (theta)
+  {
+  return theta / 180.0 * pi()
+  }
+
+/* Radians to degrees */
+define todeg (theta)
+  {
+  return theta / pi() * 180.0
+  }
+
+define pyth(x, y)
+  {
+  return sqrt (x*x + y*y)
+  }
+
+/*==========================================================================
+Log and exponential
+==========================================================================*/
+
+define alog(x)
+  {
+  return 10^x
+  }
+
+define log(x)
+  {
+  return l(x)
+  }
+
+define log10(x)
+  {
+  return l(x)/l(10)
+  }
+
+define exp(x)
+  {
+  return e(x)
+  }
+
+/*==========================================================================
+Hyperbolic
+==========================================================================*/
+define cosh(x)
+  {
+  auto t; t=e(x);
+  return ((t + 1/t) / 2)
+  }
+
+define sinh(x)
+  {
+  auto t; t=e(x);
+  return ((t - 1/t) / 2)
+  }
+
+define tanh(x)
+  {
+  return sinh(x) / cosh(x) 
+  }
+
+
+/*==========================================================================
+Rounding
+==========================================================================*/
+define abs(x)
+  {
+  if (x < 0) return -x
+  return x
+  }
+
+# Round up to nearest integer above x
+define ceil(x) 
+  {
+  auto os, xx; x = -x; os=scale; scale=0
+  xx=x/1; if (xx>x) .= xx--
+  scale=os
+  return (-xx)
+  }
+
+# Round down to nearest integer below x
+define floor(x) 
+  {
+  auto os, xx; os=scale; scale=0
+  xx=x/1; if (xx>x) .= xx--
+  scale=os
+  return (xx)
+  }
+
+# Get the fractional part of x 
+define frac(x) 
+  {
+  auto os, xx; os=scale; scale=0
+  xx=x/1; if (xx>x) .=xx--
+  scale=os;
+  return (x-xx)
+  }
+
+# Integer greatest common divisor
+define gcd(x, y)
+  {
+  auto r, os; os=scale; scale=0
+  x/=1; y/=1
+  while (y>0) 
+    {
+    r=x%y; x=y; y=r
+    }
+  scale=os
+  return x
+  }
+
+# Round to next integer nearest 0, like the (int) cast in C
+define int(x) 
+  { 
+  auto os; os=scale; scale=0
+  x /= 1 
+  scale=os 
+  return x
+  } 
+
+# Integer least common multiple
+define lcm(x,y)
+  {
+  auto r,m,os; os=scale; scale=0
+  x/=1; y/=1
+  m=x*y
+  while (y>0)
+   {
+   r=x%y;x=y;y=r
+   }
+  m/=x
+  scale=os
+  return m
+  }
+
+# Integer remainder
+define mod(x, y)
+  {
+  auto os
+  os=scale; scale=0
+  x/=1; y/=1; x%=y
+  scale=os
+  return x
+  }
+
+# Round to the nearest integer, up or down
+define rnd(x)
+  {
+  return floor(x + 0.5)
+  }
+
+define sgn(x)
+  {
+  if (x < 0) return -1
+  if (x > 0) return 1
+  return 0
+  }
+

@@ -1,0 +1,121 @@
+bc_lib
+------
+
+A library of helpful functions to make "bc" more friendly.
+
+Angle mode
+----------
+
+angle=deg
+Set angle mode to degrees
+
+angle=rad (the default)
+Set angle mode to radians
+
+Basic functions
+---------------
+
+alog10(x)
+Commaon (base-10) antilogarithm of x, that is, 10^x
+
+acos(x)
+Arccosine of x. If angle = deg then result is in degrees, else in radians
+
+asin(x)
+Arcsine of x. If angle = deg then result is in degrees, else in radians
+
+atan(x)
+Arctangent of x. If angle = deg then result is in degrees, else in radians
+
+cos(t)
+Cosine of t. If angle = deg then t is in degrees, else in radians
+
+cosec(t)
+Cosecant of t. If angle = deg then t is in degrees, else in radians
+
+cot(t)
+Cotangent of t. If angle = deg then t is in degrees, else in radians
+
+log(x)
+Natural logarithm of x
+
+log10(x)
+Commaon (base-10) logarithm of x
+
+pyth(x,y)
+Length of the hypotenuse of a right triangle with sides x and y
+
+sec(t)
+Secant of t
+
+sin(t)
+Sine of t. If angle = deg then t is in degrees, else in radians
+
+tan(t)
+Tangent of t. If angle = deg then t is in degrees, else in radians
+
+todeg(t)
+Converts t, an angle in radians, to degrees
+
+todeg(t)
+Converts t, an angle in degrees, to radians 
+
+Hyperbolic functions
+--------------------
+cosh(x)
+Hyperbolic cosine of x
+
+sinh(x)
+Hyperbolic sine of x
+
+tanh(x)
+Hyperbolic tangent of x
+
+
+Rounding functions
+------------------
+abs(x)
+Absolute value of x
+
+ceil(x)
+Round x to the nearest higher integer. So floor(-4.5) is -4.
+
+floor(x)
+Round x to the nearest lower integer. So floor(-4.5) is -5.
+
+frac(x)
+Fractional part of x. Result is logical, but may be surprising, where
+x is a negative number. For example, frac(-1.2) is 0.8.
+
+gcd (x,y)
+Integer greatest common divisor of x and y
+
+int (x)
+Rounds x to the integer nearest zero, like the (int) cast in C. That is,
+just discard the fractional part of x.
+
+lcm (x, y)
+Integer least common multiple of x and y. That is, the smallest integer
+that has both x and y as factors.
+
+mod(x,y)
+Integer remainder when x is divided by y. For the record, the result will
+be negative if x is negative.
+
+rnd (x)
+Rounds x to the nearest integer, whether higher or lower. rnd(0.9) is 1,
+rnd(-1.8) is -2.
+
+sgn (x)
+The sign of x. Returns 1 if x > 0, -1 of x < 0, otherwise 0.
+
+Notes
+-----
+The constant "pi" can be obtained from the function "pi()", e.g.,
+"sin(pi() / 2)"
+
+There is no "e" or "e()" to get the constant that is the base of natural
+logarithms, because e() is a built-in function. To get this constant,
+use "e(1)"
+
+
